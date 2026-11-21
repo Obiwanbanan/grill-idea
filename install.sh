@@ -11,6 +11,7 @@
 #                        folder already exists here, Claude Code if none found
 #   --global       install for your user instead of this project
 #   --list         print the folder each agent uses and exit
+#   --version X    install release X (e.g. 0.2.0) instead of the latest main
 set -euo pipefail
 
 REPO="${GRILL_IDEA_REPO:-Obiwanbanan/grill-idea}"
@@ -18,6 +19,7 @@ REF="${GRILL_IDEA_REF:-main}"
 AGENTS="auto"
 GLOBAL=0
 LIST=0
+PINNED=0
 
 ALL_AGENTS="claude codex cursor copilot gemini opencode"
 
@@ -55,6 +57,8 @@ while [ $# -gt 0 ]; do
     --agent=*) AGENTS="${1#--agent=}"; shift ;;
     --global) GLOBAL=1; shift ;;
     --list) LIST=1; shift ;;
+    --version) REF="v${2#v}"; PINNED=1; shift 2 ;;
+    --version=*) v="${1#--version=}"; REF="v${v#v}"; PINNED=1; shift ;;
     -h|--help) sed -n '2,14p' "$0" 2>/dev/null || true; exit 0 ;;
     *) echo "Unknown option: $1" >&2; exit 1 ;;
   esac
@@ -105,16 +109,20 @@ TMP=""
 cleanup() { [ -n "$TMP" ] && rm -rf "$TMP"; }
 trap cleanup EXIT
 
-if [ -n "$SCRIPT_DIR" ] && [ -d "$SCRIPT_DIR/plugins/grill-idea" ]; then
+if [ "$PINNED" -eq 0 ] && [ -n "$SCRIPT_DIR" ] && [ -d "$SCRIPT_DIR/plugins/grill-idea" ]; then
   SRC="$SCRIPT_DIR/plugins/grill-idea/skills/grill-idea"
 else
   TMP="$(mktemp -d)"
   echo "Downloading $REPO@$REF..."
-  curl -fsSL "https://codeload.github.com/$REPO/tar.gz/$REF" | tar -xz -C "$TMP" --strip-components=1
+  curl -fsSL "https://codeload.github.com/$REPO/tar.gz/$REF" -o "$TMP/src.tar.gz" 2>/dev/null \
+    || { echo "Could not download $REPO@$REF. Check the version in CHANGELOG.md." >&2; exit 1; }
+  tar -xzf "$TMP/src.tar.gz" -C "$TMP" --strip-components=1
   SRC="$TMP/plugins/grill-idea/skills/grill-idea"
 fi
 
 [ -f "$SRC/SKILL.md" ] || { echo "Skill not found at $SRC" >&2; exit 1; }
+VERSION="$(sed -n 's/^  version: *"\{0,1\}\([^"]*\)"\{0,1\}$/\1/p' "$SRC/SKILL.md" | head -1)"
+echo "grill-idea ${VERSION:-(unknown version)}"
 
 for d in $DIRS; do
   DEST="$BASE/$d/grill-idea"

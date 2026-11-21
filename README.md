@@ -16,6 +16,8 @@ It installs for the agents it finds in the project. Works with Claude Code, Code
 curl -fsSL https://raw.githubusercontent.com/Obiwanbanan/grill-idea/main/install.sh | bash -s -- --agent cursor,codex --global
 ```
 
+Add `--version 0.2.0` to install a specific release ([changelog](CHANGELOG.md)). Run the command again to update.
+
 For Claude Code you can also install it as a plugin: `claude plugin marketplace add Obiwanbanan/grill-idea`, then `claude plugin install grill-idea@grill-idea`.
 
 ## Use

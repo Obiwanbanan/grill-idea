@@ -44,6 +44,7 @@ A bank to draw from, not a questionnaire. Ask only what changes the decision, th
 - What does it look like today, before the change?
 - Which number should move: time, errors, support requests, completed actions, repeat purchases, something else?
 - Do we have the data to see it? If not, is there a reasonable proxy?
+- Who will check whether it worked, and when: a week after release, a month, after the next quarter?
 
 Don't force a numeric goal when there is no reliable data. Record the missing baseline. For a small usability fix, clear acceptance criteria can be enough; say why.
 

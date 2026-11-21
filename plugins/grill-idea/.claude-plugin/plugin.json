@@ -1,6 +1,6 @@
 {
   "name": "grill-idea",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Grill a product idea in plain business language and turn it into one ticket in any tracker. Replies in the language you write in.",
   "repository": "https://github.com/Obiwanbanan/grill-idea",
   "license": "MIT",
