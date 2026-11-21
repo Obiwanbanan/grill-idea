@@ -1,0 +1,15 @@
+{
+  "name": "grill-idea",
+  "owner": {
+    "name": "Obiwanbanan"
+  },
+  "description": "Business-language grilling for anyone with a product idea: from an idea to one ticket.",
+  "plugins": [
+    {
+      "name": "grill-idea",
+      "source": "./plugins/grill-idea",
+      "description": "Grill a product idea in business language and turn it into one ticket in any tracker. Replies in the language you write in.",
+      "category": "productivity"
+    }
+  ]
+}
