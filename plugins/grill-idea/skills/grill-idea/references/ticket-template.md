@@ -9,6 +9,8 @@ The implementation depends on both understanding the idea the same way, so **mea
 
 A reader who wasn't in the conversation must not have to guess. If a decision was made in the grilling, it's in the ticket.
 
+**Language:** the template below is in English only as a reference. Write every heading and label in the idea owner's language. In Russian, for example: Проблема, Ценность (Для пользователя / Для бизнеса / Цена бездействия), Что должно измениться, Пример, Решения и почему, Готово, когда, Вне рамок, Успех (Ожидаемый результат / Метрика / Текущее значение / Цель / Кто проверяет / Когда оцениваем), Сложность, Открытые вопросы.
+
 ```markdown
 ## Problem
 [Who has the problem, in what situation, what they can't do today, and why it matters now. Mark assumptions as "(assumption)".]

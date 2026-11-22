@@ -3,7 +3,7 @@ name: grill-idea
 description: Grill someone about a product idea or hypothesis in plain business language, then turn the agreed result into one ticket in the team's tracker (GitHub, GitLab, Jira, Linear, a local file, or anything else). Use when someone describes a feature idea, request, or hypothesis they want turned into a task, or asks to grill an idea.
 license: MIT
 metadata:
-  version: "0.2.0"
+  version: "0.3.0"
 ---
 
 # Grill Idea
@@ -18,7 +18,7 @@ Every question is about users, problems, value, money, time, risk, scope, or suc
 
 The code is yours to read, not theirs to discuss. When something you find matters to the decision, translate it into product terms ("the product already lets admins export reports, just not from this screen"), never file names, components, or jargon.
 
-Always reply in the language the idea owner writes in, and write the ticket in that language too. These instructions and their examples are in English; translate them, don't switch the conversation to English.
+Always reply in the language the idea owner writes in, and write the whole ticket in that language too: title, body, **section headings and field labels** ("## Проблема", "**Для пользователя:**", "Выполнено, когда"). These instructions and the template are in English; translate them, never copy the English headings into a ticket in another language.
 
 ## 1. Study the product
 
@@ -26,27 +26,45 @@ Before the first round, read the project to understand the product from a user's
 
 Read-only: don't modify files, run the app, or open secrets (`.env`, keys, credentials, customer data).
 
-## 2. Grill
+## 2. Look for the same idea in the tracker
+
+Before the first question, find the tracker and search it for tickets about the same problem or solution ([trackers.md](./references/trackers.md)). Search open and closed tickets with a few distinctive words, then with synonyms.
+
+- **Found something close:** show each match in one line (title, link, open or closed, how it overlaps) and ask what to do: build on it (the new ticket references it, or becomes a comment on it), go ahead with a separate ticket, or stop here.
+- **Nothing found:** say so in one line and start grilling.
+- **Tracker unknown:** make "where do tickets go" the first question of round 1, and search as soon as you have the answer, before the next round.
+- **Tracker unreachable:** say so in one line and carry on.
+
+## 3. Grill
 
 Interview the idea owner relentlessly until you reach a shared understanding. Map it as a **decision tree**: every business decision branches into the decisions that hang off it.
 
-Work the tree in **rounds**. The **frontier** is every decision whose prerequisites are already settled: the questions you can ask _now_ without guessing at answers you haven't heard. Ask the whole frontier in one round: number each question and give your recommended answer. Then wait for the answers.
+Work the tree in **rounds**. The **frontier** is every decision whose prerequisites are already settled: the questions you can ask _now_ without guessing at answers you haven't heard. Ask the whole frontier in one round, then wait for the answers.
 
-Format a round like so:
+Keep the idea owner's effort low. Format a round like so:
 
 ```
-❓ **Q1** - **<question title>**: <question body, might be multiple paragraphs, including multiple choices>
+❓ **Q1.** <the question, one short sentence>
 
-➡️ <your recommended answer>
+- **A.** <option> ⭐ recommended: <reason, a few words>
+- **B.** <option>
+- **C.** <option>
 
 ---
 
-❓ **Q2** - **<question title>**: <question body, might be multiple paragraphs, including multiple choices>
+❓ **Q2.** <the question>
 
-➡️ <your recommended answer>
+➡️ <your recommended answer, one short sentence>
+
+---
+
+Reply with letters ("1A, 2 yes"), "yes" to accept all recommendations, or your own words.
 ```
 
-Word each question so "yes" accepts your recommendation. Ground recommendations in what you found in the product and what the idea owner said; say so when one is a guess.
+- **The question comes first**, with no title or topic label before it. One sentence, plain words. Add one short line of context above it only when the question makes no sense without it.
+- **Give options** when there are real alternatives: 2–4, each a few words, the recommended one marked ⭐ with a short reason. When there is only one sensible answer to confirm, or it's an open question like a number, give a single ➡️ recommendation instead.
+- **Short answers.** One line per option. No paragraphs, no repeating the question.
+- Ground recommendations in what you found in the product and what the idea owner said; say so when one is a guess.
 
 Each answered round reshapes the tree. Recompute the frontier and ask the next round. A question whose answer depends on another question still open in this round belongs to a later round.
 
@@ -67,12 +85,14 @@ Never invent evidence, numbers, baselines, or targets. "Unknown" is a valid answ
 
 The grilling is done when the frontier is empty: every branch visited, nothing silently assumed. Summarise the shared understanding in a few lines and ask the idea owner to confirm it before you write the ticket.
 
-## 3. Write the ticket
+## 4. Write the ticket
 
 Draft one ticket with [ticket-template.md](./references/ticket-template.md). It must carry everything agreed in the grilling, so that a person and a coding agent who missed the conversation both understand what the idea owner meant. Show the title and body exactly as they will be published.
 
 One ticket. No subtasks, specs, technical plans, or time estimates. You do give it a rough **complexity score from 1 to 100**, set by you from what you read in the product and explained in product terms (scale in the template). Never ask the idea owner for it.
 
-## 4. Publish
+If a related ticket was found in step 2, link it in the ticket.
 
-Find out where tickets go with [trackers.md](./references/trackers.md). Show the destination with the draft, and publish only after the idea owner explicitly approves that exact draft. Report the ticket link or ID only once the tool has returned it. If publishing is impossible, hand over the ticket as Markdown ready to paste.
+## 5. Publish
+
+Publish to the tracker found in step 2 ([trackers.md](./references/trackers.md)). Show the destination with the draft, and publish only after the idea owner explicitly approves that exact draft. Report the ticket link or ID only once the tool has returned it. If publishing is impossible, hand over the ticket as Markdown ready to paste.

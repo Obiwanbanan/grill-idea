@@ -11,9 +11,11 @@ Stop at the first one that answers:
 3. **Ask the idea owner.** One question in the round format, with what you found as the recommendation:
 
 ```
-❓ **Q1** - **Where should the ticket go**: I can see the project is on GitHub and the `gh` tool is signed in. Should I create the ticket in GitHub Issues for `acme/shop`?
+❓ **Q1.** Where should the ticket go?
 
-➡️ Yes, GitHub Issues in `acme/shop`.
+- **A.** GitHub Issues in `acme/shop` ⭐ recommended: the project is there and I'm signed in.
+- **B.** Another tracker (name it).
+- **C.** Just give me Markdown to paste.
 ```
 
 If the idea owner names a tracker you can't reach, say what's missing in plain words ("I'm not connected to Jira here") and offer the paste-ready Markdown.
@@ -22,7 +24,11 @@ After the first ticket, offer to save the choice to `docs/agents/issue-tracker.m
 
 ## 2. Check for duplicates
 
-Where the tracker supports search, search for the main problem in a few distinctive words before creating. If a likely duplicate exists, show it and ask whether to comment on it, update it, or create a new ticket anyway.
+Do this **before the grilling starts**, right after finding the tracker, so the idea owner doesn't spend time on an idea that's already filed or was already rejected. Search open and closed tickets for the problem and the solution, a few distinctive words at a time, then synonyms. Use the search commands in the table below.
+
+Show each match in one line and let the idea owner choose: build on it, file separately, or stop. Closed tickets matter too: "we tried this in 2024 and dropped it" is evidence for the grilling.
+
+If the idea changed a lot during the grilling, search once more before publishing.
 
 ## 3. Publish
 

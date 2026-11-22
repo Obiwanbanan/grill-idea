@@ -16,7 +16,7 @@ It installs for the agents it finds in the project. Works with Claude Code, Code
 curl -fsSL https://raw.githubusercontent.com/Obiwanbanan/grill-idea/main/install.sh | bash -s -- --agent cursor,codex --global
 ```
 
-Add `--version 0.2.0` to install a specific release ([changelog](CHANGELOG.md)). Run the command again to update.
+Add `--version 0.3.0` to install a specific release ([changelog](CHANGELOG.md)). Run the command again to update.
 
 For Claude Code you can also install it as a plugin: `claude plugin marketplace add Obiwanbanan/grill-idea`, then `claude plugin install grill-idea@grill-idea`.
 
@@ -39,6 +39,9 @@ Write in any language: the agent replies and writes the ticket in the language y
  Agent reads the project quietly        (what the product already does)
         │
         ▼
+ Checks the tracker for the same idea   (build on it, file separately, or stop)
+        │
+        ▼
  Rounds of business questions           (who, why now, value, smallest version, success)
         │
         ▼
@@ -51,13 +54,13 @@ Write in any language: the agent replies and writes the ticket in the language y
  A developer takes it into their own process
 ```
 
-Each question comes with a recommended answer: reply "yes" or write your own. It never asks about code, architecture, or estimates.
+Questions are short, with options and one recommended. Reply with letters, "yes" to accept the recommendations, or your own words. It never asks about code, architecture, or estimates.
 
 ```
-❓ Q1 - Who is this for: The product has two groups that see subscriptions: account
-owners and their staff. Who needs to pause?
+❓ Q1. Who needs to pause a subscription?
 
-➡️ Account owners only. Staff can't manage billing today.
+- A. Account owners only ⭐ recommended: staff can't manage billing today.
+- B. Owners and staff.
 ```
 
 ## License

@@ -4,6 +4,12 @@ Versions follow [Semantic Versioning](https://semver.org). Each release is a git
 
 When releasing, bump the version in `plugins/grill-idea/skills/grill-idea/SKILL.md` (`metadata.version`) and `plugins/grill-idea/.claude-plugin/plugin.json`, add a section here, then tag the commit.
 
+## 0.3.0
+
+- Looks for the same idea in the tracker (open and closed tickets) **before** the grilling, not after it. The idea owner chooses: build on it, file separately, or stop.
+- Ticket headings and field labels are written in the idea owner's language, not copied from the English template.
+- Shorter rounds: no title before a question, one-sentence questions, 2–4 short options with one marked ⭐ recommended, replies like "1A, 2B".
+
 ## 0.2.0
 
 - Ticket: new **Value** section (for the user, for the business, cost of doing nothing).

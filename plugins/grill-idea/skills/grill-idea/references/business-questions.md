@@ -1,6 +1,6 @@
 # Business questions
 
-A bank to draw from, not a questionnaire. Ask only what changes the decision, the value, or the scope. Every question still goes out in the round format, with a recommended answer.
+A bank to draw from, not a questionnaire. Ask only what changes the decision, the value, or the scope. Every question still goes out in the round format: short, options where they make sense, one marked as recommended.
 
 ## Problem
 
@@ -61,15 +61,22 @@ What you found in the code becomes context for a business decision, never a tech
 ## Example round
 
 ```
-❓ **Q1** - **Who is this for**: You said "users want to export reports". The product has two groups that see reports: account owners and their staff. Who hits this problem?
+❓ **Q1.** Who needs to export reports?
 
-➡️ Account owners only, for the first version. They're the ones sending reports to accountants.
+- **A.** Account owners only ⭐ recommended: they send reports to accountants.
+- **B.** Owners and their staff.
 
 ---
 
-❓ **Q2** - **Why now**: Is this coming from real requests (support tickets, sales calls) or from a hunch?
+❓ **Q2.** Where does this come from?
 
-➡️ I'd guess a few support tickets. If you know how many, that helps us size the value.
+- **A.** Support tickets or sales calls ⭐ my guess; how many, if you know?
+- **B.** One customer asked.
+- **C.** A hunch, no requests yet.
+
+---
+
+Reply with letters ("1A, 2B"), "yes" to accept all recommendations, or your own words.
 ```
 
 ## Disagreeing constructively
